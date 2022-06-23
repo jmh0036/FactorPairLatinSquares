@@ -9,15 +9,15 @@
 using namespace std;
 
 // Define the order of the SPLS$(a,b)$, where SIZE = $a \times b$
-#define SIZE 16
+#define SIZE 8
 #define a 2
-#define b 8
-#define fp2 4
-#define fp3 4
+#define b 4
+// #define fp2 4
+// #define fp3 4
 
 const int SIZE_SQUARED = SIZE*SIZE;
 const int ROW_NB = SIZE*SIZE*SIZE;
-const int intCount = 5; // Number of Factors (Factor Pairs)
+const int intCount = 4; // Number of Factors (Factor Pairs)
 const int COL_NB = (intCount+1) * SIZE*SIZE; // +1 for one symbol in each cell
 
 #define MAX_K 1000
@@ -145,8 +145,8 @@ void BuildSparseMatrix(bool matrix[ROW_NB][COL_NB]) {
     FParray[3][0] = b;
     FParray[3][1] = a;
 
-    FParray[4][0] = fp2;
-    FParray[4][1] = fp3;
+    // FParray[4][0] = fp2;
+    // FParray[4][1] = fp3;
     // FParray[5][0] = fp3;
     // FParray[5][1] = fp2;
 
@@ -312,22 +312,14 @@ void SolveSudoku(int Sudoku[][SIZE]) {
 int main(){
     // Starting Puzzle
     int Puzzle[SIZE][SIZE] = {   
-{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+{1, 2, 3, 4, 5, 6, 7, 8},
+{0, 0, 0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0, 0, 0}
                             };
 
 
