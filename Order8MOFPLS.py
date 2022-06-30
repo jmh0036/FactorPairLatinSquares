@@ -1,25 +1,19 @@
 from itertools import product
 import copy
 
-def solve_sudoku(size, grid):
+def solve_sudoku(sizes, grid):
+    N = len(grid)
     # """ An efficient Sudoku solver using Algorithm X.
-    R, C = size
-    N = R * C
-    X = ([("rc", rc) for rc in product(range(N), range(N))] +
-         [("rn", rn) for rn in product(range(N), range(1, N + 1))] +
-         [("cn", cn) for cn in product(range(N), range(1, N + 1))] +
-         [("bn", bn) for bn in product(range(N), range(1, N + 1))] + 
-         [("dn", bn) for bn in product(range(N), range(1, N + 1))])
+    X = ([("rc", rc) for rc in product(range(N), range(N))])
     Y = dict()
     for r, c, n in product(range(N), range(N), range(1, N + 1)):
-        b = (r // R) * R + (c // C) # a \times b Box number
-        d = (r // C) * C + (c // R) # b \times a Box number
-        Y[(r, c, n)] = [
-            ("rc", (r, c)),
-            ("rn", (r, n)),
-            ("cn", (c, n)),
-            ("bn", (b, n)),
-            ("dn", (d, n))]
+        Y[(r, c, n)] = [("rc", (r, c))]
+    for size in sizes:
+        R, C = size
+        # N = R * C
+        X += [("r%s"%str(size), rn) for rn in product(range(N), range(1, N + 1))]
+        for r, c, n in product(range(N), range(N), range(1, N + 1)):
+            Y[(r, c, n)] += [("r%s"%str(size), ((r // R) * R + (c // C), n))]
     X, Y = exact_cover(X, Y)
     for i, row in enumerate(grid):
         for j, n in enumerate(row):
@@ -107,7 +101,7 @@ if __name__ == "__main__":
 
     numOfSoltns = 0
     MutOrthSet = []
-    for solution in solve_sudoku((a,b),grid):
+    for solution in solve_sudoku([(1,n),(n,1),(a,b),(b,a)],grid):
         if MutOrthSet == []:
             MutOrthSet.append(copy.deepcopy(solution))
             for i in solution:
@@ -122,6 +116,8 @@ if __name__ == "__main__":
         numOfSoltns += 1
         # for s in solution:
         #     print(s)
-        # print('solution number', numOfSoltns)
+        WhenToPrint = 1000000
+        if numOfSoltns%WhenToPrint == 0:
+            print('There are over', numOfSoltns//WhenToPrint, 'million solutions')
         # print('')
     print('There are', numOfSoltns, 'solutions')
