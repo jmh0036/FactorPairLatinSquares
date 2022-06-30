@@ -1,25 +1,19 @@
 from itertools import product
 import copy
 
-def solve_sudoku(size, grid):
+def solve_sudoku(grid):
     # """ An efficient Sudoku solver using Algorithm X.
-    R, C = size
-    N = R * C
+    # R, C = size
+    N = len(grid)
     X = ([("rc", rc) for rc in product(range(N), range(N))] +
          [("rn", rn) for rn in product(range(N), range(1, N + 1))] +
-         [("cn", cn) for cn in product(range(N), range(1, N + 1))] +
-         [("bn", bn) for bn in product(range(N), range(1, N + 1))] + 
-         [("dn", bn) for bn in product(range(N), range(1, N + 1))])
+         [("cn", cn) for cn in product(range(N), range(1, N + 1))] )
     Y = dict()
     for r, c, n in product(range(N), range(N), range(1, N + 1)):
-        b = (r // R) * R + (c // C) # a \times b Box number
-        d = (r // C) * C + (c // R) # b \times a Box number
         Y[(r, c, n)] = [
             ("rc", (r, c)),
             ("rn", (r, n)),
-            ("cn", (c, n)),
-            ("bn", (b, n)),
-            ("dn", (d, n))]
+            ("cn", (c, n))]
     X, Y = exact_cover(X, Y)
     for i, row in enumerate(grid):
         for j, n in enumerate(row):
@@ -73,15 +67,39 @@ def IsOrthogonal(grid1,grid2):
     for i in range(len(grid1)):
         for j in range(len(grid1)):
             SetOfOrderedPairs.add((grid1[i][j],grid2[i][j]))
+
+    # print(grid1, grid2, SetOfOrderedPairs)
+    # for i in range(len(grid1)):
+    #     print(grid1[i], grid2[i])
+    # print(SetOfOrderedPairs)
+    # print(grid2)
+
     if len(SetOfOrderedPairs) != len(grid1)**2:
         return False
     else:
         return True
 
 def AreMutuallyOrthogonal(arrayOfarrays,testArray):
-    # if arrayOfarrays == []:
-    #     return True
+    # print(arrayOfarrays, testArray)
+
+    # diagonal = set()
+    # for i in range(len(testArray)):
+    #     diagonal.add(testArray[i][i])
+    # if len(diagonal) in [len(testArray),1]:
+    #     idempotent = True
+    # else:
+    #     idempotent = False
+    
+    if len(arrayOfarrays) == 0:
+        # if idempotent == True:
+        #     return True
+        # else:
+        #     return False
+        return True
     for i in arrayOfarrays:
+        # for j in range(len(i)):
+        #     print(i[j], testArray[j])
+        # print('')
         if IsOrthogonal(i,testArray) == False:
             return False
     return True
@@ -90,38 +108,37 @@ if __name__ == "__main__":
     import doctest
     doctest.testmod()
 
-    a = 2
-    b = 4
-    n = a*b
-
     grid = [
-        [1,2,3,4,5,6,7,8],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0]
+        [1,2,3,4,5,6,7],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0]
     ]
 
     numOfSoltns = 0
-    MutOrthSet = []
-    for solution in solve_sudoku((a,b),grid):
-        if MutOrthSet == []:
-            MutOrthSet.append(copy.deepcopy(solution))
+    MutOrthLst = []
+    # print(type(solve_sudoku(grid)))
+    for solution in solve_sudoku(grid):
+        # print(MutOrthLst, solution, AreMutuallyOrthogonal(MutOrthLst, solution[:]))
+        # print(MutOrthLst, solution)
+        if AreMutuallyOrthogonal(MutOrthLst, solution[:]) == True:
+            MutOrthLst.append(copy.deepcopy(solution))
             for i in solution:
                 print(i)
             print('')
-        else:
-            if AreMutuallyOrthogonal(MutOrthSet,solution) == True:
-                MutOrthSet.append(copy.deepcopy(solution))
-                for i in solution:
-                    print(i)
-                print('')
         numOfSoltns += 1
+        
         # for s in solution:
         #     print(s)
         # print('solution number', numOfSoltns)
         # print('')
     print('There are', numOfSoltns, 'solutions')
+
+    print(MutOrthLst, len(MutOrthLst))
+
+# print(AreMutuallyOrthogonal([[[1, 2, 3], [3, 1, 2], [2, 3, 1]]], [[1, 2, 3],[2, 3, 1],[3, 1, 2]]))
+
+# print(IsOrthogonal([[1, 2, 3], [3, 1, 2], [2, 3, 1]],[[1, 2, 3],[2, 3, 1],[3, 1, 2]]))
