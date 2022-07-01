@@ -71,7 +71,7 @@ if __name__ == "__main__":
     LatinList = [(1,6),(6,1),(2,3),(3,2)]
 
     # Creating a random first row
-    RemainigChoices = list(range(1,7))
+    RemainigChoices = list(range(1,LatinList[0][0]*LatinList[0][1]+1))
     FirstRow = []
     while RemainigChoices != []:
         NextElement = rnd.choice(RemainigChoices)
