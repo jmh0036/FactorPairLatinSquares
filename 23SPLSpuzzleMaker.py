@@ -108,9 +108,26 @@ if __name__ == "__main__":
             if numOfSolutions > 1:
                 break
 
+    print('\nPuzzle before trimming')
+    for p in UniquePuzzle:
+        print(p)
+
+    # Minimize clues in the puzzle
+    TestPuzzle = copy.deepcopy(UniquePuzzle)
+    for row in range(len(TestPuzzle)):
+        for col in range(len(TestPuzzle)):
+            TestPuzzle[row][col] = 0
+            numOfSolutions = 0
+            for sol in solve_sudoku([(1,6),(6,1),(2,3),(3,2)],copy.deepcopy(TestPuzzle)):
+                numOfSolutions += 1
+            if numOfSolutions == 1:
+                UniquePuzzle = copy.deepcopy(TestPuzzle)
+            else:
+                TestPuzzle = copy.deepcopy(UniquePuzzle)
+
     print('')
 
-    print('Puzzle:')
+    print('Puzzle after trimming:')
     for p in UniquePuzzle:
         print(p)
 
