@@ -67,6 +67,9 @@ if __name__ == "__main__":
     import doctest
     doctest.testmod()
 
+    # Let's define the list of things to be latin so we can reuse it.
+    LatinList = [(1,6),(6,1),(2,3),(3,2)]
+
     # Creating a random first row
     RemainigChoices = list(range(1,7))
     FirstRow = []
@@ -89,7 +92,7 @@ if __name__ == "__main__":
 
     # Pick a solution to trim from.
     WhichSol = rnd.randint(0,1935)
-    TestPuzzle = solution = list(islice(solve_sudoku([(1,6),(6,1),(2,3),(3,2)],TestPuzzle),WhichSol,WhichSol+1))[0]
+    TestPuzzle = solution = list(islice(solve_sudoku(LatinList,TestPuzzle),WhichSol,WhichSol+1))[0]
     # print(list(solution)[0])
     # puzzle = list(solution)[0]
     numOfSolutions = 1
@@ -100,7 +103,7 @@ if __name__ == "__main__":
         randomRow = rnd.randint(0,5)
         randomCol = rnd.randint(0,5)
         TestPuzzle[randomRow][randomCol] = 0
-        solution = solve_sudoku([(1,6),(6,1),(2,3),(3,2)],copy.deepcopy(TestPuzzle))
+        solution = solve_sudoku(LatinList,copy.deepcopy(TestPuzzle))
         numOfSolutions = 0
         # print(TestPuzzle)   
         for sol in solution:
@@ -118,7 +121,7 @@ if __name__ == "__main__":
         for col in range(len(TestPuzzle)):
             TestPuzzle[row][col] = 0
             numOfSolutions = 0
-            for sol in solve_sudoku([(1,6),(6,1),(2,3),(3,2)],copy.deepcopy(TestPuzzle)):
+            for sol in solve_sudoku(LatinList,copy.deepcopy(TestPuzzle)):
                 numOfSolutions += 1
             if numOfSolutions == 1:
                 UniquePuzzle = copy.deepcopy(TestPuzzle)
@@ -134,7 +137,7 @@ if __name__ == "__main__":
     print('')
 
     print('solutions')
-    for sol in solve_sudoku([(1,6),(6,1),(2,3),(3,2)],UniquePuzzle):
+    for sol in solve_sudoku(LatinList,UniquePuzzle):
         for s in sol:
             print(s)
         print('')
