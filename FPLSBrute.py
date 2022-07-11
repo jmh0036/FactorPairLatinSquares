@@ -1,6 +1,7 @@
 import math
 import sys
 # import time
+# This is really just a git test.
 
 #Size of Factor Pair Latin Square
 n = 6
