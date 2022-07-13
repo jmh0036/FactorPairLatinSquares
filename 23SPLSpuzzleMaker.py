@@ -136,8 +136,34 @@ if __name__ == "__main__":
 
     print('')
 
+    CorrectAnswer = list(solve_sudoku(LatinList,copy.deepcopy(UniquePuzzle)))[0]
+
     print('solutions')
-    for sol in solve_sudoku(LatinList,UniquePuzzle):
-        for s in sol:
-            print(s)
-        print('')
+    for s in CorrectAnswer:
+        print(s)
+    print('')
+
+    # For JSON file
+    f = open("test_square_data2.json", "a")
+    id = -1
+    f.write('[\n')
+    for i in range(len(UniquePuzzle)):
+        for j in range(len(UniquePuzzle)):
+            id += 1
+            # always this value to start
+            f.write('    {\n')
+            f.write( '''        "Value": null, \n''' )
+            f.write( '''        "id": ''' + str(id) + ',\n' )
+            f.write( '''        "row": ''' + str(i) + ',\n')
+            f.write( '''        "col": ''' + str(j) + ',\n')
+            if UniquePuzzle[i][j] != 0:
+                f.write( '''        "value_start": ''' + str(UniquePuzzle[i][j]) + ',\n')
+            else:
+                f.write('''        "value_start": null, \n''')
+            f.write('''        "value_correct": ''' + str(CorrectAnswer[i][j]) + '\n')
+            if i == len(UniquePuzzle) - 1 == j:
+                f.write('    }\n')
+            else:
+                f.write('    },\n')
+    f.write(']\n')
+    f.close()
