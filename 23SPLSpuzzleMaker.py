@@ -144,7 +144,7 @@ if __name__ == "__main__":
     print('')
 
     # For JSON file
-    f = open("test_square_data2.json", "a")
+    f = open("test_square_data.json", "w")
     id = -1
     f.write('[\n')
     for i in range(len(UniquePuzzle)):

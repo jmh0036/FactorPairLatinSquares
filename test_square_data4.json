@@ -4,7 +4,7 @@
         "id": 0,
         "row": 0,
         "col": 0,
-        "value_start": null, 
+        "value_start": 5,
         "value_correct": 5
     },
     {
@@ -13,7 +13,7 @@
         "row": 0,
         "col": 1,
         "value_start": null, 
-        "value_correct": 1
+        "value_correct": 2
     },
     {
         "Value": null, 
@@ -29,14 +29,14 @@
         "row": 0,
         "col": 3,
         "value_start": null, 
-        "value_correct": 4
+        "value_correct": 1
     },
     {
         "Value": null, 
         "id": 4,
         "row": 0,
         "col": 4,
-        "value_start": 3,
+        "value_start": null, 
         "value_correct": 3
     },
     {
@@ -44,8 +44,8 @@
         "id": 5,
         "row": 0,
         "col": 5,
-        "value_start": 2,
-        "value_correct": 2
+        "value_start": null, 
+        "value_correct": 4
     },
     {
         "Value": null, 
@@ -53,14 +53,14 @@
         "row": 1,
         "col": 0,
         "value_start": null, 
-        "value_correct": 2
+        "value_correct": 1
     },
     {
         "Value": null, 
         "id": 7,
         "row": 1,
         "col": 1,
-        "value_start": 4,
+        "value_start": null, 
         "value_correct": 4
     },
     {
@@ -77,30 +77,30 @@
         "row": 1,
         "col": 3,
         "value_start": null, 
-        "value_correct": 1
+        "value_correct": 5
     },
     {
         "Value": null, 
         "id": 10,
         "row": 1,
         "col": 4,
-        "value_start": null, 
-        "value_correct": 6
+        "value_start": 2,
+        "value_correct": 2
     },
     {
         "Value": null, 
         "id": 11,
         "row": 1,
         "col": 5,
-        "value_start": null, 
-        "value_correct": 5
+        "value_start": 6,
+        "value_correct": 6
     },
     {
         "Value": null, 
         "id": 12,
         "row": 2,
         "col": 0,
-        "value_start": 3,
+        "value_start": null, 
         "value_correct": 3
     },
     {
@@ -117,23 +117,23 @@
         "row": 2,
         "col": 2,
         "value_start": null, 
-        "value_correct": 2
+        "value_correct": 4
     },
     {
         "Value": null, 
         "id": 15,
         "row": 2,
         "col": 3,
-        "value_start": null, 
-        "value_correct": 5
+        "value_start": 2,
+        "value_correct": 2
     },
     {
         "Value": null, 
         "id": 16,
         "row": 2,
         "col": 4,
-        "value_start": 1,
-        "value_correct": 1
+        "value_start": null, 
+        "value_correct": 5
     },
     {
         "Value": null, 
@@ -141,7 +141,7 @@
         "row": 2,
         "col": 5,
         "value_start": null, 
-        "value_correct": 4
+        "value_correct": 1
     },
     {
         "Value": null, 
@@ -149,7 +149,7 @@
         "row": 3,
         "col": 0,
         "value_start": null, 
-        "value_correct": 4
+        "value_correct": 2
     },
     {
         "Value": null, 
@@ -164,7 +164,7 @@
         "id": 20,
         "row": 3,
         "col": 2,
-        "value_start": null, 
+        "value_start": 1,
         "value_correct": 1
     },
     {
@@ -173,7 +173,7 @@
         "row": 3,
         "col": 3,
         "value_start": null, 
-        "value_correct": 6
+        "value_correct": 4
     },
     {
         "Value": null, 
@@ -181,7 +181,7 @@
         "row": 3,
         "col": 4,
         "value_start": null, 
-        "value_correct": 2
+        "value_correct": 6
     },
     {
         "Value": null, 
@@ -196,7 +196,7 @@
         "id": 24,
         "row": 4,
         "col": 0,
-        "value_start": null, 
+        "value_start": 6,
         "value_correct": 6
     },
     {
@@ -205,7 +205,7 @@
         "row": 4,
         "col": 1,
         "value_start": null, 
-        "value_correct": 3
+        "value_correct": 1
     },
     {
         "Value": null, 
@@ -213,7 +213,7 @@
         "row": 4,
         "col": 2,
         "value_start": null, 
-        "value_correct": 4
+        "value_correct": 2
     },
     {
         "Value": null, 
@@ -221,46 +221,46 @@
         "row": 4,
         "col": 3,
         "value_start": null, 
-        "value_correct": 2
+        "value_correct": 3
     },
     {
         "Value": null, 
         "id": 28,
         "row": 4,
         "col": 4,
-        "value_start": null, 
-        "value_correct": 5
+        "value_start": 4,
+        "value_correct": 4
     },
     {
         "Value": null, 
         "id": 29,
         "row": 4,
         "col": 5,
-        "value_start": null, 
-        "value_correct": 1
+        "value_start": 5,
+        "value_correct": 5
     },
     {
         "Value": null, 
         "id": 30,
         "row": 5,
         "col": 0,
-        "value_start": null, 
-        "value_correct": 1
+        "value_start": 4,
+        "value_correct": 4
     },
     {
         "Value": null, 
         "id": 31,
         "row": 5,
         "col": 1,
-        "value_start": 2,
-        "value_correct": 2
+        "value_start": null, 
+        "value_correct": 3
     },
     {
         "Value": null, 
         "id": 32,
         "row": 5,
         "col": 2,
-        "value_start": 5,
+        "value_start": null, 
         "value_correct": 5
     },
     {
@@ -269,7 +269,7 @@
         "row": 5,
         "col": 3,
         "value_start": null, 
-        "value_correct": 3
+        "value_correct": 6
     },
     {
         "Value": null, 
@@ -277,14 +277,14 @@
         "row": 5,
         "col": 4,
         "value_start": null, 
-        "value_correct": 4
+        "value_correct": 1
     },
     {
         "Value": null, 
         "id": 35,
         "row": 5,
         "col": 5,
-        "value_start": 6,
-        "value_correct": 6
+        "value_start": null, 
+        "value_correct": 2
     }
 ]
