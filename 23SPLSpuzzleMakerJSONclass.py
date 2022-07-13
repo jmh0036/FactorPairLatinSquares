@@ -97,6 +97,12 @@ if __name__ == "__main__":
     # Pick a solution to trim from.
     WhichSol = rnd.randint(0,1935)
     TestPuzzle = solution = list(islice(solve_sudoku(LatinList,TestPuzzle),WhichSol,WhichSol+1))[0]
+    
+    # print('TestPuzzle Chosen:')
+    # for i in TestPuzzle:
+    #     print(i)
+    # print('')
+
     numOfSolutions = 1
     while numOfSolutions == 1:
         UniquePuzzle = copy.deepcopy(TestPuzzle)
@@ -109,6 +115,10 @@ if __name__ == "__main__":
             numOfSolutions += 1
             if numOfSolutions > 1:
                 break
+
+    # print('Puzzle before trimming:')
+    # for p in UniquePuzzle:
+    #     print(p)
 
     # Minimize clues in the puzzle
     TestPuzzle = copy.deepcopy(UniquePuzzle)
