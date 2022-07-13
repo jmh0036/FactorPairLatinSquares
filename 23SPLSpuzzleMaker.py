@@ -1,4 +1,4 @@
-from itertools import product, islice, combinations
+from itertools import product, islice
 import copy
 import random as rnd
 
@@ -64,14 +64,13 @@ def deselect(X, Y, r, cols):
                     X[k].add(i)
 
 if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-
     # Let's define the list of things to be latin so we can reuse it.
     LatinList = [(1,6),(6,1),(2,3),(3,2)]
 
+    Order = LatinList[0][0]*LatinList[0][1]
+
     # Creating a random first row
-    RemainigChoices = list(range(1,LatinList[0][0]*LatinList[0][1]+1))
+    RemainigChoices = list(range(1,Order+1))
     FirstRow = []
     while RemainigChoices != []:
         NextElement = rnd.choice(RemainigChoices)
@@ -79,41 +78,27 @@ if __name__ == "__main__":
         RemainigChoices.remove(NextElement)
 
     # Initial Puzzle
-    TestPuzzle = [
-        FirstRow,
-        [0,0,0,0,0,0],
-        [0,0,0,0,0,0],
-        [0,0,0,0,0,0],
-        [0,0,0,0,0,0],
-        [0,0,0,0,0,0]
-    ]
+    TestPuzzle = [FirstRow]
+    for i in range(Order-1):
+        TestPuzzle.append([0 for i in range(Order)])
 
     UniquePuzzle = []
 
     # Pick a solution to trim from.
     WhichSol = rnd.randint(0,1935)
     TestPuzzle = solution = list(islice(solve_sudoku(LatinList,TestPuzzle),WhichSol,WhichSol+1))[0]
-    # print(list(solution)[0])
-    # puzzle = list(solution)[0]
     numOfSolutions = 1
-    # print(TestPuzzle, numOfSolutions)
     while numOfSolutions == 1:
-        # print(TestPuzzle)
         UniquePuzzle = copy.deepcopy(TestPuzzle)
-        randomRow = rnd.randint(0,5)
-        randomCol = rnd.randint(0,5)
+        randomRow = rnd.randint(0,Order-1)
+        randomCol = rnd.randint(0,Order-1)
         TestPuzzle[randomRow][randomCol] = 0
         solution = solve_sudoku(LatinList,copy.deepcopy(TestPuzzle))
-        numOfSolutions = 0
-        # print(TestPuzzle)   
+        numOfSolutions = 0 
         for sol in solution:
             numOfSolutions += 1
             if numOfSolutions > 1:
                 break
-
-    print('\nPuzzle before trimming')
-    for p in UniquePuzzle:
-        print(p)
 
     # Minimize clues in the puzzle
     TestPuzzle = copy.deepcopy(UniquePuzzle)
