@@ -52,9 +52,9 @@ clock_t timer, timer2;
 
 int NumberOfSolutions = 0;
 
-//===============================================================================================================//
-//---------------------------------------------DLX Functions-----------------------------------------------------//
-//===============================================================================================================//
+//===========================================================================//
+//-------------------------------DLX Functions-------------------------------//
+//===========================================================================//
 
 void coverColumn(Node *col)
 {
@@ -212,11 +212,11 @@ void searchN(int k) {
     uncoverColumn(Col);
 }
 
-//===============================================================================================================//
-//----------------------Functions to turn a Sudoku grid into an Exact Cover problem -----------------------------//
-//===============================================================================================================//
+//==========================================================================//
+//-------Functions to turn a Sudoku grid into an Exact Cover problem -------//
+//==========================================================================//
 
-//--------------------------BUILD THE INITIAL MATRIX CONTAINING ALL POSSIBILITIES--------------------------------//
+//-----------BUILD THE INITIAL MATRIX CONTAINING ALL POSSIBILITIES-----------//
 void BuildSparseMatrix(bool matrix[ROW_NB][COL_NB])
 {
     // Calculates the factor Pairs.
@@ -253,7 +253,7 @@ void BuildSparseMatrix(bool matrix[ROW_NB][COL_NB])
     }
 }
 
-//-------------------BUILD A TOROIDAL DOUBLY LINKED LIST OUT OF THE SPARSE MATRIX-------------------------//
+//-------BUILD A TOROIDAL DOUBLY LINKED LIST OUT OF THE SPARSE MATRIX-------//
 void BuildLinkedList(bool matrix[ROW_NB][COL_NB])
 {
 
@@ -336,7 +336,7 @@ void BuildLinkedList(bool matrix[ROW_NB][COL_NB])
     HeadNode = header;
 }
 
-//-------------------COVERS VALUES THAT ARE ALREADY PRESENT IN THE GRID-------------------------//
+//------------COVERS VALUES THAT ARE ALREADY PRESENT IN THE GRID------------//
 void TransformListToCurrentGrid(int Puzzle[][SIZE])
 {
     int index = 0;
@@ -363,9 +363,9 @@ void TransformListToCurrentGrid(int Puzzle[][SIZE])
             }
 }
 
-//===============================================================================================================//
-//----------------------------------------------- Print Functions -----------------------------------------------//
-//===============================================================================================================//
+//===========================================================================//
+//----------------------------- Print Functions -----------------------------//
+//===========================================================================//
 
 void MapSolutionToGrid(int Sudoku[][SIZE])
 {
@@ -380,7 +380,7 @@ void MapSolutionToGrid(int Sudoku[][SIZE])
     }
 }
 
-//---------------------------------PRINTS A SUDOKU GRID OF ANY SIZE---------------------------------------------//
+//---------------------PRINTS A SUDOKU GRID OF ANY SIZE---------------------//
 void PrintGrid(int Sudoku[][SIZE])
 {
     for (int i = 0; i < SIZE; i++)
@@ -423,7 +423,7 @@ void PrintGrid(int Sudoku[][SIZE])
     }
 }
 
-//--------------------------------------------------------------------------------//
+//---------------------------------------------------------------------------//
 
 void SolveSudoku(int Sudoku[][SIZE])
 {
