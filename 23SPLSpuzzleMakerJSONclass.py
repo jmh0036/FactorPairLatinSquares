@@ -75,17 +75,17 @@ class Cell:
 
 if __name__ == "__main__":
     # Let's define the list of things to be latin so we can reuse it.
-    LatinList = [(1,6),(6,1),(2,3),(3,2)]
+    LatinList = ((1,6),(6,1),(2,3),(3,2))
 
     Order = LatinList[0][0]*LatinList[0][1]
 
     # Creating a random first row
-    RemainigChoices = list(range(1,Order+1))
+    RemainingChoices = list(range(1,Order+1))
     FirstRow = []
-    while RemainigChoices != []:
-        NextElement = rnd.choice(RemainigChoices)
+    while RemainingChoices != []:
+        NextElement = rnd.choice(RemainingChoices)
         FirstRow.append(NextElement)
-        RemainigChoices.remove(NextElement)
+        RemainingChoices.remove(NextElement)
 
     # Initial Puzzle
     TestPuzzle = [FirstRow]
@@ -150,11 +150,11 @@ if __name__ == "__main__":
 
     # Construct List of cell objects
     ListOfCells = []
-    idno = -1
+    idNo = -1
     for i in range(len(UniquePuzzle)):
         for j in range(len(UniquePuzzle)):
-            idno += 1
-            ListOfCells.append(Cell(None,idno,i,j,None if UniquePuzzle[i][j] == 0 else UniquePuzzle[i][j],CorrectAnswer[i][j]))
+            idNo += 1
+            ListOfCells.append(Cell(None,idNo,i,j,None if UniquePuzzle[i][j] == 0 else UniquePuzzle[i][j],CorrectAnswer[i][j]))
 
     # Write to JSON file
     jsonStr = json.dumps([ob.__dict__ for ob in ListOfCells], indent=4)
